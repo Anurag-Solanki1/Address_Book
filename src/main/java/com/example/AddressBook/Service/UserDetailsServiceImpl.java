@@ -19,10 +19,10 @@ import java.util.UUID;
 @Component
 @AllArgsConstructor
 @Data
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class  UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private final UserRepository userRepository;
+    private final UserRepository  userRepository;
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
@@ -51,7 +51,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             return false;
         }
         String userId = UUID.randomUUID().toString();
-        userRepository.save(new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>()));
+        userRepository.save(new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(),userInfoDto.getEmail(), new HashSet<>()));
 
         return true;
     }
