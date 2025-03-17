@@ -25,7 +25,6 @@ public class ContactController {
     public ResponseEntity<List<ContactDTO>> getAllContacts() {
         return ResponseEntity.ok(service.getAllContacts());
     }
-
     // GET Contact by ID
     @GetMapping("/{id}")
     public ResponseEntity<ContactDTO> getContactById(@PathVariable Long id) {
