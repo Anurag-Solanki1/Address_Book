@@ -6,6 +6,8 @@ import com.example.AddressBook.Response.JwtResponseDTO;
 import com.example.AddressBook.Service.JwtService;
 import com.example.AddressBook.Service.RefreshTokenService;
 import com.example.AddressBook.Service.UserDetailsServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
+@Tag(name = "Authentication",description = "Signup")
 public class AuthController
 {
 
@@ -29,6 +32,7 @@ public class AuthController
     private UserDetailsServiceImpl userDetailsService;
 
     @PostMapping("auth/v1/signup")
+    @Operation(summary = "Signup of user",description = "Signup")
     public ResponseEntity SignUp(@RequestBody UserInfoDTO userInfoDto){
         try{
             Boolean isSignUped = userDetailsService.signupUser(userInfoDto);
